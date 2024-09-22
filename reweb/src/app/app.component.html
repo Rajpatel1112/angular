@@ -1,0 +1,96 @@
+<header>
+  <div class="navbar" [class.sticky]="isSticky">
+    <div class="logo">
+      <img src="../assets/images/download.png" alt="Your Logo" />
+    </div>
+    <input type="text" class="search-bar" placeholder="Search...">
+    <div class="menu" [class.open]="isMobileMenuOpen">
+      <button mat-button>Home</button>
+    
+      <button mat-button [matMenuTriggerFor]="servicesMenu">Services</button>
+      <mat-menu #servicesMenu="matMenu">
+        <button mat-menu-item>Consulting</button>
+        <button mat-menu-item>Support</button>
+        <button mat-menu-item>Sales</button>
+      </mat-menu>
+    
+      <button mat-button [matMenuTriggerFor]="aboutMenu">About</button>
+      <mat-menu #aboutMenu="matMenu">
+        <button mat-menu-item>Our Story</button>
+        <button mat-menu-item>Team</button>
+        <button  mat-menu-item>Careers</button>
+      </mat-menu>
+    
+      <button mat-button [matMenuTriggerFor]="contactMenu">Contact</button>
+      <mat-menu #contactMenu="matMenu">
+        <button mat-menu-item>Email Us</button>
+        <button mat-menu-item>Support</button>
+        <button mat-menu-item>Location</button>
+      </mat-menu>
+    </div>
+    
+    <div class="hamburger" (click)="toggleMobileMenu()">
+      &#9776;
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-text"><h2>Welcome to Our Site</h2></div>
+  </section>
+  
+  <section class="articles">
+    <div class="card" *ngFor="let article of articles">
+      <img [src]="article.image" alt="Article Image">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.excerpt }}</p>
+      <button>Read More</button>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>About Us</h3>
+      <ul>
+        <li><a mat-button >Our Story</a></li>
+        <li><a mat-button >Team</a></li>
+        <li><a mat-button >Careers</a></li>
+        <li><a mat-button >Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Services</h3>
+      <ul>
+        <li><a mat-button >Consulting</a></li>
+        <li><a mat-button >Support</a></li>
+        <li><a mat-button >Sales</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <li><a mat-icon-button href="#"><mat-icon>facebook</mat-icon></a></li>
+        <li><a mat-icon-button href="#"><mat-icon>camera_alt</mat-icon></a></li>
+      </div>
+    </div>
+    <div class="footer-column">
+      <h4>Newsletter</h4>
+      <form class="newsletter-form">
+        <mat-form-field>
+          <input matInput type="email" placeholder="Enter your email" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <button *ngIf="isVisible" [ngClass]="{'visible': isVisible}" (click)="scrollToTop()" class="scroll-to-top">
+      ↑
+    </button>
+  </div>
+</footer>
+
+
+
